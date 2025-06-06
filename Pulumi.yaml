@@ -1,0 +1,6 @@
+name: service-infra
+description: "AWS Infra Project with modular VPC, Bastion, RDS, EKS components (TypeScript + Pulumi)"
+runtime: 
+  name: nodejs
+  options:
+    packagemanager: npm
