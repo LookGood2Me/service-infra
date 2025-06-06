@@ -1,4 +1,4 @@
-name: Pulumi Deploy EKS
+name: 1.4 Deploy EKS
 
 on:
   workflow_dispatch:

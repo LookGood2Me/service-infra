@@ -1,4 +1,4 @@
-name: Pulumi Deploy All (VPC, Bastion, RDS, EKS)
+name: 1. Deploy All
 
 on:
   workflow_dispatch:

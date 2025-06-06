@@ -1,4 +1,4 @@
-name: Pulumi Deploy VPC
+name: 1.1 Deploy VPC
 
 on:
   workflow_dispatch:

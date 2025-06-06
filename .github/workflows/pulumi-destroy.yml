@@ -1,4 +1,4 @@
-name: Pulumi Destroy All (VPC, Bastion, RDS, EKS)
+name: 3. Destroy All
 
 on:
   workflow_dispatch:

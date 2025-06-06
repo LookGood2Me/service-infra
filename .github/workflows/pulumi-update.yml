@@ -1,4 +1,4 @@
-name: Pulumi Refresh & Up (VPC, Bastion, RDS, EKS)
+name: 2. Refresh & Up All Resources
 
 on:
   workflow_dispatch:

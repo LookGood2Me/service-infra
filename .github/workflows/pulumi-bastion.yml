@@ -1,4 +1,4 @@
-name: Pulumi Deploy Bastion
+name: 1.2 Deploy Bastion
 
 on:
   workflow_dispatch:
