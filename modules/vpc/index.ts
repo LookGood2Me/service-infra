@@ -92,7 +92,7 @@ export class VpcComponent extends pulumi.ComponentResource {
             return new aws.ec2.Eip(
                 `${name}-nat-eip-${idx}`,
                 {
-                    vpc: true,
+                    domain: "vpc", // vpc 필드 대신 domain 사용
                     tags: { Name: `${name}-nat-eip-${idx}` },
                 },
                 { parent: this.vpc }

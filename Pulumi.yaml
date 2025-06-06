@@ -4,3 +4,6 @@ runtime:
   name: nodejs
   options:
     packagemanager: npm
+
+config:
+  aws:region: ap-northeast-2

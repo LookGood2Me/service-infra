@@ -1,0 +1,22 @@
+config:
+  service-infra:projectName: lg2m-service
+  service-infra:vpcCidr: "10.0.0.0/16"
+  service-infra:bastionInstanceType: t3.micro
+  service-infra:eksClusterName: lg2m-service
+  service-infra:eksNodeGroupName: lg2m-service-eks-node-group
+  service-infra:eksNodeInstanceType: t3.medium
+  service-infra:eksNodeDesiredCapacity: "2"
+  service-infra:eksNodeMaxSize: "3"
+  service-infra:eksNodeMinSize: "1"
+  service-infra:rdsInstanceType: db.t3.micro
+  service-infra:rdsEngine: mysql
+  service-infra:rdsEngineVersion: "8.0"
+  service-infra:rdsAllocatedStorageType: gp2
+  service-infra:rdsStorageEncrypted: "true"
+  service-infra:rdsUsername: lg2m_db_admin
+  service-infra:rdsDbName: lg2m_service_db
+  service-infra:rdsAllocatedStorage: "20"
+  service-infra:bastionPublicKey:
+    secure: AAABALjwWia22MxWxfHW0EJ84mUuIxmX06Q84Yar6hzkP2fePBXJks5pCvfsajVrbVIykSXGw+VJRGsn+d+IHBdeN14a3voNO2JqO7Y7v9Q++1FI47IWyqvILmjhH/LOzvFSjud/CE0UaR0Tn7LUGembldS03r5KLduNXfMCcH8VkMVl91be0w//Mf11eULt/jcQAz8uYS8LZPIujx0oMUrJ7XBh6IuZww05ftaglPg8sTl7qycI4qPX++waelWDNP743Js1xMftekBquC5JZ6X4GJVfKXIamG7I094Uwz5k2d3JTxA+NEQChh8+805wJjRoCzbTf2inx9WI7vtfe16T1CRSHRTmbNB2TLd2MPSHcceuva4ET+XOZMQmGQSoafAJml1eRT4qxMYFKXmm/eHKcXmPk+VSntyWK4rowErmcWT+SGLTC1i7tiqsvL/Qsu6NG0xXtObhZmMI/9bx/E2DLnB77ET9Bk2UFnoqadtQCuUzdsAbh6KbX81vLn2+LdqZRk6rFer9X2Y9XhghJ+Eyum5CjQQki1ObwT5CV94jM6rRYNQz/TgS53vmFnwioVI5VLu+g9t77nBEitNcOnll0bzAuIZrzyvwLC57q1krKkAhiKuylIzKgJ1Jv+4BUdtTuMpnxVGWzjGXOAJE5M7hbFf+xquF/cV/Y2X+65fApGzZ0v9nBZis42a7n7AJ2Y1wNt8h9H6HggVuQrxGDUfInc7qbeN6OtErl6q8Iccml/kD+IRZHjqyLbeUJiVNb0IWEkvs9P2TaumELqwLGXfav1I=
+  service-infra:rdsPassword:
+    secure: AAABALcMEzH0XVoDCIbtTIJloSyWi4Iz0P1DUkhJbuvE7M05YWzJ2w==

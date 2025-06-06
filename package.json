@@ -9,7 +9,7 @@
     "destroy": "pulumi destroy"
   },
   "dependencies": {
-    "@pulumi/aws": "^6.0.0",
+    "@pulumi/aws": "^6.82.1",
     "@pulumi/awsx": "^2.0.2",
     "@pulumi/eks": "^3.0.0",
     "@pulumi/pulumi": "^3.113.0"

@@ -13,10 +13,9 @@ export class BastionComponent extends pulumi.ComponentResource {
     public readonly publicIp: pulumi.Output<string>;
     public readonly keyName: pulumi.Output<string>;
 
-    constructor(name: string, args: BastionArgs, opts?: pulumi.ComponentResourceOptions) {
+    constructor(name: string, instanceType: string, args: BastionArgs, opts?: pulumi.ComponentResourceOptions) {
         super("custom:resource:BastionComponent", name, {}, opts);
 
-        // 1) Security Group: SSH(22) 인바운드 열기 (0.0.0.0/0)
         const bastionSg = new aws.ec2.SecurityGroup(
             `${name}-sg`,
             {
@@ -43,10 +42,9 @@ export class BastionComponent extends pulumi.ComponentResource {
             { parent: this }
         );
 
-        // 2) Pulumi Config에서 미리 저장된 public key 불러오기
-        //    (예: pulumi config set aws-infra:bastionPublicKey "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC...")
+        // 2) Keypair 설정을 위해 Pulumi Config에서 미리 저장된 public key 
         const config = new pulumi.Config();
-        const publicKey = config.require("bastionPublicKey");
+        const publicKey = config.requireSecret("bastionPublicKey");
 
         // 3) Key Pair 생성 (publicKey는 config에서 가져온 값)
         const keyPair = new aws.ec2.KeyPair(
@@ -76,7 +74,7 @@ export class BastionComponent extends pulumi.ComponentResource {
             `${name}-instance`,
             {
                 ami: ami.then((a: aws.ec2.GetAmiResult) => a.id),
-                instanceType: "t3.micro",
+                instanceType: instanceType,
                 subnetId: pulumi.output(args.publicSubnetIds).apply((ids: string[]) => ids[0]), // 첫 번째 퍼블릭 서브넷 선택
                 keyName: keyPair.keyName,
                 vpcSecurityGroupIds: [bastionSg.id],
@@ -91,7 +89,7 @@ export class BastionComponent extends pulumi.ComponentResource {
             `${name}-eip`,
             {
                 instance: bastionInstance.id,
-                vpc: true,
+                domain: "vpc", // vpc: true 대신 domain: 'vpc' 사용
                 tags: { Name: `${name}-eip` },
             },
             { parent: bastionInstance }
